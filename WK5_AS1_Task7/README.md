@@ -16,7 +16,7 @@ with open('/content/uszips.csv','wb') as f:
 files.download('/content/uszips.csv')
 ```
 
-Download `uszips.csv` and place it at `data/uszips.csv` inside this project. Keep the original ZIP in Drive. Do NOT use `df.to_csv()` for this transfer: preserve the exact source bytes and fingerprint. Confirm Colab's SHA-256 equals local manifest later.
+Download `uszips.csv`  Data Source: https://simplemaps.com/data/us-zips and place it at `data/uszips.csv` inside this project. Keep the original ZIP in Drive. Do NOT use `df.to_csv()` for this transfer: preserve the exact source bytes and fingerprint. Confirm Colab's SHA-256 equals local manifest later.
 
 ## Windows PowerShell
 
