@@ -1,4 +1,10 @@
 .env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.streamlit/neon-secrets.toml
+data/
+.neon
 .venv/
 __pycache__/
 *.pyc

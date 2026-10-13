@@ -36,6 +36,32 @@ If Python 3.13 is not installed, use `py -3.12` for Python 3.12. `py -0p` lists 
 
 Visit http://localhost:8501 (or http://127.0.0.1:8501). The app requires PostgreSQL; it will not silently fall back to a CSV.
 
+## Neon and Streamlit Cloud
+
+The hosted target is project `CPS5745WK5AS1` (`crimson-leaf-80998443`),
+production branch `br-icy-glade-b55zdjcs`, database `cps5745_lab`.
+The dashboard defaults to all 56 state/territory identifiers and a minimum
+of one ZIP per group. For the lab comparison, select NJ/NY and minimum 3.
+
+After signing into the Neon CLI, run from this folder:
+
+```powershell
+.venv\Scripts\python setup_neon.py --inspect
+.venv\Scripts\python setup_neon.py
+```
+
+The setup reuses the existing database, creates separate loader and reader
+roles without resetting existing passwords, loads the original full CSV,
+and runs the PostgreSQL verification checks. Conflicting imported data is
+not overwritten. The laptop `.env` stays unchanged; hosted loader settings
+are stored privately in `.env.neon`.
+
+Enter the contents of `.streamlit/neon-secrets.toml` in Streamlit Cloud's
+app secrets. This generated file uses the pooled Neon hostname and a
+read-only reader account with `DB_SSLMODE="require"`. Keep both generated
+credential files out of GitHub. Deploy the updated `database.py` and
+`dashboard_app.py` before testing the cloud app.
+
 ## Verification evidence
 
 - Colab: 33,782 distinct ZIP rows, 18 columns, 19 missing population and 19 missing density, SHA-256.

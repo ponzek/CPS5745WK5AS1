@@ -46,9 +46,9 @@ except Exception as e:
 st.caption(f'**Source:** SimpleMaps Basic v1.95.1 · **Database:** cps5745_lab / lab.uszips · **Imported rows:** {nrows:,} · **Imported at:** {imported} · **CSV SHA-256:** `{sha}`')
 with st.sidebar:
     st.header('Filters · PostgreSQL')
-    selected_states=st.multiselect('States / territories',all_states,default=[s for s in ('NJ','NY') if s in all_states])
+    selected_states=st.multiselect('States / territories',all_states,default=all_states)
     level=st.selectbox('Group ZIP records by',['County','State','City'])
-    minimum=st.number_input('Minimum ZIP records per group',min_value=1,max_value=1000,value=3)
+    minimum=st.number_input('Minimum ZIP records per group',min_value=1,max_value=1000,value=1)
     top_n=st.slider('Top N for bar and box only',1,30,10)
     st.caption('Top N changes displayed groups, not the selected ZIP count or scatter data.')
 if not selected_states:
